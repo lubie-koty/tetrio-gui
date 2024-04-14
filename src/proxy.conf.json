@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://ch.tetr.io",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

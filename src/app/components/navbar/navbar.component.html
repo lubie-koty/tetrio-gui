@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <mat-icon fontIcon="menu"></mat-icon>
+  </button>
+  <a mat-icon-button routerLink="">
+    <mat-icon fontIcon="home"></mat-icon>
+  </a>
+  <a style="padding-top: 0.4em" routerLink="">
+    <img src="assets/tetrio-glow.png" />
+  </a>
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+  <a mat-menu-item routerLink="/news">
+    <mat-icon fontIcon="newspaper"></mat-icon>
+    <span>News</span>
+  </a>
+  <a mat-menu-item routerLink="/leaderboards">
+    <mat-icon fontIcon="leaderboard"></mat-icon>
+    <span>User Leaderboards</span>
+  </a>
+</mat-menu>

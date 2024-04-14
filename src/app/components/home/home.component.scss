@@ -1,0 +1,10 @@
+.home-container {
+  display: inline-grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 1rem;
+}
+
+.activity-card {
+  width: fit-content;
+  height: fit-content;
+}
