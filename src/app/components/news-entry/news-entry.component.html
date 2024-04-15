@@ -1,0 +1,44 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <mat-icon fontIcon="event"></mat-icon>
+      {{ newsEntry.ts | date : "d MMM y, HH:mm:ss" }}
+    </mat-panel-title>
+    <mat-panel-description>
+      New {{ NewsNameMap[newsEntry.type] }}
+    </mat-panel-description>
+    <ng-template [ngSwitch]="newsEntry.type" matExpansionPanelContent>
+      <p *ngSwitchCase="NewsTypeEnum.Badge">
+        The {{ $any(newsEntry.data).label }} badge was earned by
+        {{ newsEntry.data.username }}.
+      </p>
+      <div *ngSwitchCase="NewsTypeEnum.Leaderboard">
+        <p>
+          User {{ newsEntry.data.username }} has achieved the rank
+          {{ $any(newsEntry.data).rank | uppercase }} by earning score
+          {{ $any(newsEntry.data).result | number : ".2-2" }} in
+          {{ $any(newsEntry.data).gametype }}!
+        </p>
+        <p>Replay ID: {{ $any(newsEntry.data).replayid }}</p>
+      </div>
+      <div *ngSwitchCase="NewsTypeEnum.PersonalBest">
+        <p>
+          User {{ newsEntry.data.username }} has achieved a new personal best of
+          {{ $any(newsEntry.data).result | number : ".2-2" }} in
+          {{ $any(newsEntry.data).gametype }}!
+        </p>
+        <p>Replay ID: {{ $any(newsEntry.data).replayid }}</p>
+      </div>
+      <p *ngSwitchCase="NewsTypeEnum.Rankup">
+        User {{ newsEntry.data.username }} has achieved a new rank
+        {{ $any(newsEntry.data).rank | uppercase }}!
+      </p>
+      <p *ngSwitchCase="NewsTypeEnum.Supporter">
+        User {{ newsEntry.data.username }} has become a supporter!
+      </p>
+      <p *ngSwitchCase="NewsTypeEnum.SupporterGift">
+        User {{ newsEntry.data.username }} has received a supporter gift!
+      </p>
+    </ng-template>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>

@@ -1,1 +1,17 @@
-<p>news works!</p>
+<div class="news-container">
+  <mat-card class="news-card">
+    <mat-card-title style="padding-left: 0.5em">
+      <mat-icon fontIcon="newspaper"></mat-icon>
+      <span>News</span>
+    </mat-card-title>
+    <mat-card-content>
+      <ng-container *ngFor="let newsEntry of newsData; last as isLast">
+        <app-news-entry
+          [newsEntry]="newsEntry"
+          matListItemLine
+        ></app-news-entry>
+        <span *ngIf="!isLast">&nbsp;</span>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+</div>

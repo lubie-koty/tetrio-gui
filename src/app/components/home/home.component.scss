@@ -1,4 +1,11 @@
 .home-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.home-content {
+  flex: none;
   display: inline-grid;
   grid-template-columns: 2fr 1fr;
   column-gap: 1rem;
