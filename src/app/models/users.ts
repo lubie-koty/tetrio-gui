@@ -1,3 +1,23 @@
+export enum Role {
+  Anonymous = 'anon',
+  User = 'user',
+  Bot = 'bot',
+  JuniorModerator = 'halfmod',
+  Moderator = 'mod',
+  Administrator = 'admin',
+  SystemOperator = 'sysop',
+}
+
+export const RoleNameMap = {
+  [Role.Anonymous]: 'Anonymous',
+  [Role.User]: 'User',
+  [Role.Bot]: 'Bot',
+  [Role.JuniorModerator]: 'Junior Moderator',
+  [Role.Moderator]: 'Moderator',
+  [Role.Administrator]: 'Administrator',
+  [Role.SystemOperator]: 'System Operator',
+};
+
 interface League {
   gamesplayed: number; // The amount of TETRA LEAGUE games played by this user.
   gameswon: number; // The amount of TETRA LEAGUE games won by this user.
@@ -11,7 +31,7 @@ interface League {
 
 export interface User {
   username: string; // The user's username.
-  role: string; // The user's role (one of "anon", "user", "bot", "halfmod", "mod", "admin", "sysop").
+  role: Role; // The user's role (one of "anon", "user", "bot", "halfmod", "mod", "admin", "sysop").
   xp: number; // The user's XP in points.
   country?: string; // The user's ISO 3166-1 country code, or null if hidden/unknown. Some vanity flags exist.
   supporter: boolean; // Whether this user is currently supporting TETR.IO <3
@@ -25,7 +45,7 @@ export interface Leaderboard {
 
 export interface XPUser {
   username: string; // The user's username.
-  role: string; // The user's role (one of "anon", "user", "bot", "halfmod", "mod", "admin", "sysop").
+  role: Role; // The user's role (one of "anon", "user", "bot", "halfmod", "mod", "admin", "sysop").
   ts?: string; // When the user account was created. If not set, this account was created before join dates were recorded.
   country?: string; // The user's ISO 3166-1 country code, or null if hidden/unknown. Some vanity flags exist.
   supporter: boolean; // Whether this user is currently supporting TETR.IO <3

@@ -1,0 +1,9 @@
+.users-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.users-container .users-content {
+  flex: 0 0 50%;
+}

@@ -1,0 +1,32 @@
+<ng-container *ngFor="let user of userData; index as idx; last as isLast">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ idx + 1 }}. {{ user.username }}
+        <ng-template *ngIf="user.country">
+          <span class="fi fi-{{ user.country | lowercase }}"></span>
+        </ng-template>
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ roleNameMap[user.role] }}
+        <ng-template *ngIf="user.supporter">
+          <b> SUPPORTER</b>
+        </ng-template>
+        <ng-template *ngIf="user.ts">
+          <span> {{ user.ts | date : "d MMM y" }}</span>
+        </ng-template>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <p>User's XP: {{ user.xp | number : ".2-2" }}</p>
+      <p *ngIf="user.gamesplayed !== -1">
+        Games played: {{ user.gamesplayed }}
+      </p>
+      <p *ngIf="user.gameswon !== -1">Games won: {{ user.gameswon }}</p>
+      <p *ngIf="user.gametime !== -1">
+        Game time spent: {{ user.gametime | number : ".2-2" }}
+      </p>
+    </div>
+  </mat-expansion-panel>
+  <span *ngIf="!isLast">&nbsp;</span>
+</ng-container>

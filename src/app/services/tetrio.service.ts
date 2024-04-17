@@ -45,7 +45,6 @@ class UsersResource {
   }
 
   getLeaderboardXP() {
-    console.log(`${environment.apiUrl}/users/lists/xp`);
     return this.httpClient.get<APIResponse<XPLeaderboard>>(
       `${environment.apiUrl}/users/lists/xp`
     );

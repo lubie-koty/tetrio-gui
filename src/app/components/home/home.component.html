@@ -1,54 +1,59 @@
 <div class="home-container">
-  <div class="home-content">
-    <mat-card>
-      <mat-card-title style="padding-left: 0.5em">
-        <span>Server Statistics</span>
-      </mat-card-title>
-      <mat-card-content>
-        <mat-list>
-          <mat-list-item>
-            <mat-icon fontIcon="person"></mat-icon>
-            Users Logged In: {{ serverStatistics.usercount | number }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <mat-icon fontIcon="person_add"></mat-icon>
-            Users Total: {{ serverStatistics.totalaccounts | number }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <mat-icon fontIcon="whatshot"></mat-icon>
-            Replays On Server: {{ serverStatistics.replaycount | number }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <mat-icon fontIcon="sports_esports"></mat-icon>
-            Games Played Recently:
-            {{ serverStatistics.gamesplayed_delta | number : ".2-2" }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <mat-icon fontIcon="timer"></mat-icon>
-            Game Time Total:
-            {{ serverStatistics.gametime | number : ".0-0" }}
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item>
-            <mat-icon fontIcon="grid_view"></mat-icon>
-            Pieces Places Total:
-            {{ serverStatistics.piecesplaced | number }}
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="activity-card">
-      <mat-card-header>
-        <mat-icon fontIcon="view_kanban"></mat-icon>
-        <span>User Activity</span>
-      </mat-card-header>
-      <mat-card-content>
-        <app-line-graph [chartData]="serverActivity"></app-line-graph>
-      </mat-card-content>
-    </mat-card>
+  <div *ngIf="isFetchFinished !== 2; else loadedContent">
+    <mat-spinner></mat-spinner>
   </div>
+  <ng-template #loadedContent>
+    <div class="home-content">
+      <mat-card>
+        <mat-card-title style="padding-left: 0.5em">
+          <span>Server Statistics</span>
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon fontIcon="person"></mat-icon>
+              Users Logged In: {{ serverStatistics.usercount | number }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <mat-icon fontIcon="person_add"></mat-icon>
+              Users Total: {{ serverStatistics.totalaccounts | number }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <mat-icon fontIcon="whatshot"></mat-icon>
+              Replays On Server: {{ serverStatistics.replaycount | number }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <mat-icon fontIcon="sports_esports"></mat-icon>
+              Games Played Recently:
+              {{ serverStatistics.gamesplayed_delta | number : ".2-2" }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <mat-icon fontIcon="timer"></mat-icon>
+              Game Time Total:
+              {{ serverStatistics.gametime | number : ".0-0" }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <mat-icon fontIcon="grid_view"></mat-icon>
+              Pieces Places Total:
+              {{ serverStatistics.piecesplaced | number }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="activity-card">
+        <mat-card-header>
+          <mat-icon fontIcon="view_kanban"></mat-icon>
+          <span>User Activity</span>
+        </mat-card-header>
+        <mat-card-content>
+          <app-line-graph [chartData]="serverActivity"></app-line-graph>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-template>
 </div>

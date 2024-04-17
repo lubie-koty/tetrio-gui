@@ -31,6 +31,9 @@ export class LineGraphComponent implements OnInit, OnChanges {
     ) {
       return;
     }
+    if (!this.chart) {
+      return;
+    }
     this.chart.data.datasets.pop();
     const today = new Date();
     const endDate = new Date(today.setDate(today.getDate() - 1));

@@ -1,0 +1,39 @@
+<ng-container *ngFor="let user of userData; index as idx; last as isLast">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span>{{ idx + 1 }}. {{ user.username }}</span>
+        <span class="flag-spacer"></span>
+        <span
+          *ngIf="user.country"
+          class="fi fi-{{ user.country | lowercase }}"
+        ></span>
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ roleNameMap[user.role] }}
+        <ng-template *ngIf="user.supporter">
+          <b> SUPPORTER</b>
+        </ng-template>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div>
+      <p>User's XP: {{ user.xp | number : ".2-2" }}</p>
+      <p>Games played: {{ user.league.gamesplayed }}</p>
+      <p>Games won: {{ user.league.gameswon }}</p>
+      <p *ngIf="user.league.rating !== -1">
+        Tetra rating: {{ user.league.rating | number : ".2-2" }}
+      </p>
+      <p>Tetra rank: {{ user.league.rank | uppercase }}</p>
+      <p *ngIf="user.league.apm">
+        Attack per minute: {{ user.league.apm | number : ".2-2" }}
+      </p>
+      <p *ngIf="user.league.pps">
+        Pieces per second: {{ user.league.pps | number : ".2-2" }}
+      </p>
+      <p *ngIf="user.league.vs">
+        Versus score: {{ user.league.vs | number : ".2-2" }}
+      </p>
+    </div>
+  </mat-expansion-panel>
+  <span *ngIf="!isLast">&nbsp;</span>
+</ng-container>

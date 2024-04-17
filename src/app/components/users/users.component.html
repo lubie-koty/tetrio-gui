@@ -1,1 +1,16 @@
-<p>users works!</p>
+<div class="users-container">
+  <mat-card class="users-content">
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="TETRA LEAGUE Leaderboard">
+          <app-leaderboard [userData]="mainLeaderboardData"></app-leaderboard>
+        </mat-tab>
+        <mat-tab label="XP Leaderboard">
+          <app-xp-leaderboard
+            [userData]="xpLeaderboardData"
+          ></app-xp-leaderboard>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>
